@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <h2>Computed</h2>
+      <button v-on:click="a++">A'yı arttır</button>
+      <button v-on:click="b++">B'yı arttır</button>
+      <p>A: {{a}}</p>
+      <p>B: {{b}}</p>
+      <p>Yaş + A: {{aYaEkle}}</p>
+      <p>Yaş + B: {{bYeEkle}}</p>
+      
+      <h2>Methods</h2>
+      <button v-on:click="c++">C'yı arttır</button>
+      <button v-on:click="d++">D'yı arttır</button>
+      <p>Yaş + D: {{dYeEkle()}}</p>
+      <p>Yaş + C: {{cYeEkle()}}</p>
+      <p>C: {{c}}</p>
+      <p>D: {{d}}</p>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            b: 0,
+            a: 0,
+            c: 0,
+            d: 0,
+            yas: 20,
+          };
+        },
+        methods: {
+          cYeEkle() {
+            console.log("D eklendi");
+            return this.d + this.yas;
+          },
+          dYeEkle() {
+            console.log("C eklendi");
+            return this.c + this.yas;
+          },
+        },
+        computed: {
+          aYaEkle() {
+            console.log("A eklendi");
+            return this.a + this.yas;
+          },
+          bYeEkle() {
+            console.log("B eklendi");
+            return this.b + this.yas;
+          },
+        },
+      }).mount("#app");
+
+      // Genellikle computed hesaplamalı değerler için, methods ise fonksiyonlar ve olaylar için kullanılır.
+    </script>
+  </body>
+</html>
